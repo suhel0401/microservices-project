@@ -6,11 +6,10 @@ pipeline {
             steps {
                 script {
                     dir('src') {
-
-                    withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                        sh "docker build -t shaikmustafa77/cartservice:latest ."
-                    }
+                        withDockerRegistry(credentialsId: 'docker-cred') {
+                            sh "docker build -t suhel0401/cartservice:latest ."
                         }
+                    }
                 }
             }
         }
@@ -18,8 +17,8 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                        sh "docker push shaikmustafa77/cartservice:latest "
+                    withDockerRegistry(credentialsId: 'docker-cred') {
+                        sh "docker push suhel0401/cartservice:latest"
                     }
                 }
             }
